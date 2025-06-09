@@ -1,0 +1,115 @@
+@@ -0,0 +1,114 @@
+#pragma once
+
+namespace SumApp {
+
+    using namespace System;
+    using namespace System::ComponentModel;
+    using namespace System::Collections;
+    using namespace System::Windows::Forms;
+    using namespace System::Data;
+    using namespace System::Drawing;
+
+    public ref class Form1 : public System::Windows::Forms::Form
+    {
+    public:
+        Form1(void)
+        {
+            InitializeComponent();
+        }
+
+    protected:
+        ~Form1()
+        {
+            if (components)
+            {
+                delete components;
+            }
+        }
+
+    private: System::Windows::Forms::Label^ label1;
+    private: System::Windows::Forms::Label^ label2;
+    private: System::Windows::Forms::TextBox^ textBox1;
+    private: System::Windows::Forms::TextBox^ textBox2;
+    private: System::Windows::Forms::Button^ button1;
+    private: System::Windows::Forms::Label^ resultLabel;
+
+    private:
+        System::ComponentModel::Container ^components;
+
+#pragma region Windows Form Designer generated code
+
+        void InitializeComponent(void)
+        {
+            this->label1 = (gcnew System::Windows::Forms::Label());
+            this->label2 = (gcnew System::Windows::Forms::Label());
+            this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+            this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+            this->button1 = (gcnew System::Windows::Forms::Button());
+            this->resultLabel = (gcnew System::Windows::Forms::Label());
+            this->SuspendLayout();
+            // 
+            // label1
+            // 
+            this->label1->AutoSize = true;
+            this->label1->Location = System::Drawing::Point(30, 30);
+            this->label1->Name = L"label1";
+            this->label1->Size = System::Drawing::Size(50, 13);
+            this->label1->Text = L"1-sonni kiriting:";
+            // 
+            // label2
+            // 
+            this->label2->AutoSize = true;
+            this->label2->Location = System::Drawing::Point(30, 70);
+            this->label2->Name = L"label2";
+            this->label2->Size = System::Drawing::Size(50, 13);
+            this->label2->Text = L"2-sonni kiriting:";
+            // 
+            // textBox1
+            // 
+            this->textBox1->Location = System::Drawing::Point(150, 27);
+            this->textBox1->Size = System::Drawing::Size(100, 20);
+            // 
+            // textBox2
+            // 
+            this->textBox2->Location = System::Drawing::Point(150, 67);
+            this->textBox2->Size = System::Drawing::Size(100, 20);
+            // 
+            // button1
+            // 
+            this->button1->Location = System::Drawing::Point(100, 110);
+            this->button1->Size = System::Drawing::Size(75, 23);
+            this->button1->Text = L"Yig'indini chiqar";
+            this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+            // 
+            // resultLabel
+            // 
+            this->resultLabel->AutoSize = true;
+            this->resultLabel->Location = System::Drawing::Point(100, 150);
+            this->resultLabel->Size = System::Drawing::Size(0, 13);
+            //
+            // Form1
+            //
+            this->ClientSize = System::Drawing::Size(284, 200);
+            this->Controls->Add(this->label1);
+            this->Controls->Add(this->label2);
+            this->Controls->Add(this->textBox1);
+            this->Controls->Add(this->textBox2);
+            this->Controls->Add(this->button1);
+            this->Controls->Add(this->resultLabel);
+            this->Name = L"Form1";
+            this->Text = L"Ikkita son yig'indisi";
+            this->ResumeLayout(false);
+            this->PerformLayout();
+        }
+#pragma endregion
+
+        void button1_Click(System::Object^ sender, System::EventArgs^ e)
+        {
+            int a = Convert::ToInt32(textBox1->Text);
+            int b = Convert::ToInt32(textBox2->Text);
+            int sum = a + b;
+            resultLabel->Text = "Yig'indi: " + sum.ToString();
+        }
+    };
+}
